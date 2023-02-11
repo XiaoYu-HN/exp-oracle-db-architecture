@@ -24,9 +24,33 @@ begin
     loop
         insert /*+ APPEND */ into big_table
         select rownum+l_cnt, 
-               OWNER, OBJECT_NAME, SUBOBJECT_NAME, OBJECT_ID, DATA_OBJECT_ID,
-               OBJECT_TYPE, CREATED, LAST_DDL_TIME, TIMESTAMP, STATUS,
-               TEMPORARY, GENERATED, SECONDARY, NAMESPACE, EDITION_NAME
+               owner,
+                object_name,
+                subobject_name,
+                object_id,
+                data_object_id,
+                object_type,
+                created,
+                last_ddl_time,
+                timestamp,
+                status,
+                temporary,
+                generated,
+                secondary,
+                namespace,
+                edition_name,
+                sharing,
+                editionable,
+                oracle_maintained,
+                application,
+                default_collation,
+                duplicated,
+                sharded,
+                imported_object,
+                created_appid,
+                created_vsnid,
+                modified_appid,
+                modified_vsnid
           from big_table
          where rownum <= l_rows-l_cnt;
         l_cnt := l_cnt + sql%rowcount;
